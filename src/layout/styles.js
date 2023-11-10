@@ -12,7 +12,7 @@ export const FadeIn = styled.div`
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background: #ffd863;
+  background: #ef233c;
   animation: ${fade} 4s normal forwards ease-in-out;
 `
 
