@@ -67,8 +67,8 @@ export default function Pokeballs({ speed = 1, count = 500, depth = 80, easing =
   return (
     // No need for antialias (faster), dpr clamps the resolution to 1.5 (also faster than full resolution)
     <Canvas gl={{ antialias: false }} dpr={[1, 1.5]} camera={{ position: [0, 0, 10], fov: 20, near: 0.01, far: depth + 15 }}>
-      <color attach="background" args={['#d90429']} />
-      <spotLight position={[10, 20, 10]} penumbra={1} intensity={3} color="orange" />
+      <color attach="background" args={['#1C4CBD']} />
+      <spotLight position={[10, 20, 10]} penumbra={1} intensity={3} color="red" />
       {/* Using cubic easing here to spread out objects a little more interestingly, i wanted a sole big object up front ... */}
       {Array.from({ length: count }, (_, i) => <Pokeball key={i} index={i} z={Math.round(easing(i / count) * depth)} speed={speed} /> /* prettier-ignore */)}
       <Environment preset="sunset" />
