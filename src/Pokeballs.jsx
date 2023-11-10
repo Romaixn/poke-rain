@@ -50,8 +50,8 @@ export default function Pokeballs({ speed = 1, count = 500, depth = 80, easing =
       <spotLight position={[10, 20, 10]} penumbra={1} intensity={3} color="red" />
       {Array.from({ length: count }, (_, i) => <Pokeball key={i} index={i} z={Math.round(easing(i / count) * depth)} speed={speed} /> /* prettier-ignore */)}
       <Environment preset="sunset" />
-      <EffectComposer multisampling={0}>
-        <DepthOfField target={[0, 0, 60]} focalLength={0.4} bokehScale={5} height={700} />
+      <EffectComposer disableNormalPass multisampling={0}>
+        <DepthOfField target={[0, 0, 60]} focalLength={0.4} bokehScale={4} height={700} />
       </EffectComposer>
     </Canvas>
   )
