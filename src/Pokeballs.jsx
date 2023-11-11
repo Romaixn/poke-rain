@@ -8,7 +8,7 @@ function Pokeball({ index, z, speed }) {
   const ref = useRef()
   const { viewport, camera } = useThree()
   const { width, height } = viewport.getCurrentViewport(camera, [0, 0, -z])
-  const { nodes, materials } = useGLTF('/model/pokeball.glb')
+  const { nodes, materials } = useGLTF('/model/realistic-pokeball.glb')
 
   const [data] = useState({
     y: THREE.MathUtils.randFloatSpread(height * 2),
@@ -24,24 +24,16 @@ function Pokeball({ index, z, speed }) {
     if (data.y < -(height * (index === 0 ? 4 : 1))) data.y = (height * (index === 0 ? 4 : 1))
   })
 
-  return <group ref={ref}>
-        <mesh
-            geometry={nodes.bottom.geometry}
-            material={materials.pokeballWhite}
-            material-emissive="#fff"
-        />
-        <mesh
-            geometry={nodes.center.geometry}
-            material={materials.pokeballBlack}
-            material-emissive="#000"
-        />
-        <mesh
-            geometry={nodes.top.geometry}
-            material={materials.pokeballRed}
-            material-emissive="#e70041"
-        />
-    </group>
+  return <mesh
+        ref={ref}
+        castShadow
+        receiveShadow
+        geometry={nodes.pokeball.geometry}
+        material={materials.skin}
+    />
 }
+
+useGLTF.preload("/model/realistic-pokeball.glb");
 
 export default function Pokeballs({ speed = 1, count = 500, depth = 80, easing = (x) => Math.sqrt(1 - Math.pow(x - 1, 2)) }) {
   return (
