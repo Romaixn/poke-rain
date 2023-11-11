@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { useRef, useState } from 'react'
 import { Canvas, useThree, useFrame } from '@react-three/fiber'
 import { useGLTF, Environment, Instances, Instance } from '@react-three/drei'
-import { EffectComposer, DepthOfField } from '@react-three/postprocessing'
+import { EffectComposer, DepthOfField, Bloom } from '@react-three/postprocessing'
 
 function Pokeball({ index, z, speed }) {
   const ref = useRef()
@@ -41,6 +41,7 @@ export default function Pokeballs({ speed = 1, count = 500, depth = 80, easing =
       <Environment preset="sunset" />
       <EffectComposer disableNormalPass multisampling={0}>
         <DepthOfField target={[0, 0, 60]} focalLength={0.4} bokehScale={4} height={700} />
+        <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
       </EffectComposer>
     </Canvas>
   )
