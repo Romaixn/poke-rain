@@ -28,11 +28,14 @@ function Pokeball({ index, z, speed }) {
 
 useGLTF.preload("/model/realistic-pokeball.glb");
 
-export default function Pokeballs({ speed = 1, count = 500, depth = 80, easing = (x) => Math.sqrt(1 - Math.pow(x - 1, 2)) }) {
+export default function Pokeballs({ speed = 1, depth = 80, easing = (x) => Math.sqrt(1 - Math.pow(x - 1, 2)) }) {
   const { nodes, materials } = useGLTF('/model/realistic-pokeball.glb')
+  const { viewport, camera } = useThree()
+  const { width } = viewport.getCurrentViewport(camera)
+  const count = Math.max(Math.floor(width) * 150, 200)
 
   return (
-    <Canvas gl={{ antialias: false }} dpr={[1, 1.5]} camera={{ position: [0, 0, 10], fov: 20, near: 0.01, far: depth + 15 }}>
+    <>
       <color attach="background" args={['#1C4CBD']} />
       <spotLight position={[10, 20, 10]} penumbra={1} intensity={3} color="red" />
       <Instances range={count} material={materials.skin} geometry={nodes.pokeball.geometry}>
@@ -43,6 +46,6 @@ export default function Pokeballs({ speed = 1, count = 500, depth = 80, easing =
         <DepthOfField target={[0, 0, 60]} focalLength={0.4} bokehScale={4} height={700} />
         <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
       </EffectComposer>
-    </Canvas>
+    </>
   )
 }
