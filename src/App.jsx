@@ -27,7 +27,7 @@ function Rig() {
     useFrame((state, delta) => {
       easing.damp3(
         state.camera.position,
-        [Math.sin(-state.pointer.x) / 2, state.pointer.y / 2, 10],
+        [Math.sin(state.pointer.x) / 2, state.pointer.y / 2, 10],
         0.2,
         delta,
       )
