@@ -17,6 +17,9 @@ dependencies:
   '@types/three':
     specifier: ^0.158.2
     version: 0.158.2
+  maath:
+    specifier: ^0.10.4
+    version: 0.10.4(@types/three@0.158.2)(three@0.158.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -2009,6 +2012,16 @@ packages:
     dependencies:
       yallist: 3.1.1
     dev: true
+
+  /maath@0.10.4(@types/three@0.158.2)(three@0.158.0):
+    resolution: {integrity: sha512-neHNZ302rFJzXih8r9o1tUfMouO0WKO/as5n1kX72IZvXv5qIRJyWJ2hdXBj/dCZorvnFOBLSkY8SdPmjfeXLw==}
+    peerDependencies:
+      '@types/three': '>=0.144.0'
+      three: '>=0.144.0'
+    dependencies:
+      '@types/three': 0.158.2
+      three: 0.158.0
+    dev: false
 
   /maath@0.6.0(@types/three@0.158.2)(three@0.158.0):
     resolution: {integrity: sha512-dSb2xQuP7vDnaYqfoKzlApeRcR2xtN8/f7WV/TMAkBC8552TwTLtOO0JTcSygkYMjNDPoo6V01jTw/aPi4JrMw==}
